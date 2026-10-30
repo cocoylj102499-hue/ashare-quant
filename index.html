@@ -1,124 +1,76 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1b31">
-<title>A股量化助手</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10264a"><title>A股量化助手</title>
 <style>
-:root{--navy:#0b1b31;--blue:#2165f5;--bg:#f3f6fb;--card:#fff;--muted:#718096;--red:#e5484d;--green:#159b73;--line:#e7edf5}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:#182337;padding-bottom:86px}
-header{background:linear-gradient(135deg,#0b1b31,#143a66);color:#fff;padding:22px 18px 20px;border-radius:0 0 24px 24px}
-.top{display:flex;align-items:center;justify-content:space-between}.brand{font-size:20px;font-weight:800;letter-spacing:.3px}.sub{font-size:12px;color:#b9cce4;margin-top:5px}.pill{border:1px solid #42628b;color:#dce9fa;border-radius:20px;padding:6px 10px;font-size:11px}
-.search{margin-top:18px;background:#ffffff1c;border:1px solid #ffffff26;border-radius:12px;padding:11px 13px;color:#dbe8f9;display:flex;gap:8px}.search input{background:transparent;border:0;outline:none;color:white;width:100%;font-size:14px}.search input::placeholder{color:#b9c9de}
-main{padding:15px 14px;max-width:680px;margin:auto}.page{display:none}.page.active{display:block}.section-title{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:16px;margin:18px 2px 10px}.muted{font-size:12px;color:var(--muted);font-weight:500}
-.card{background:var(--card);border-radius:17px;padding:15px;margin-bottom:12px;box-shadow:0 3px 15px #19345c08;border:1px solid #edf1f7}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#f6f8fc;border-radius:12px;padding:11px 8px}.metric .label{font-size:11px;color:var(--muted)}.metric .num{font-size:18px;font-weight:800;margin:7px 0 4px}.red{color:var(--red)}.green{color:var(--green)}.blue{color:var(--blue)}
-.shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.shortcut{border:0;background:#f5f8ff;border-radius:13px;padding:12px 3px;color:#24456f;font-size:12px}.shortcut span{display:block;font-size:22px;margin-bottom:7px}
-.chiprow{display:flex;gap:7px;overflow:auto;padding:1px 0 9px}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:20px;padding:8px 12px;font-size:12px;color:#5d6b80}.chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-.stockrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.stockrow:last-child{border-bottom:0}.stockname{font-size:14px;font-weight:750}.code{font-size:11px;color:var(--muted);margin-top:4px}.price{text-align:right;font-weight:800;font-size:15px}.change{text-align:right;font-size:12px;margin-top:4px}.tag{font-size:10px;padding:4px 7px;border-radius:6px;background:#fff0f0;color:var(--red);display:inline-block;margin-top:6px}.tag.greenbg{background:#e9f8f2;color:var(--green)}.btn{border:0;background:var(--blue);color:#fff;padding:13px 16px;border-radius:12px;font-weight:750;width:100%;font-size:14px}.btn.secondary{background:#eef4ff;color:var(--blue)}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:14px;margin:7px 0 12px}.label2{font-size:12px;color:#53647c;font-weight:700}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}.smallmetric{padding:12px;border-radius:12px;background:#f6f8fc}.smallmetric strong{display:block;font-size:19px;margin-top:6px}.bar{height:7px;background:#edf1f7;border-radius:20px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--blue);border-radius:20px}.disclaimer{font-size:11px;line-height:1.65;color:#7d8999;margin:14px 2px}
-nav{position:fixed;bottom:0;left:0;right:0;background:#fffffff2;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 5px calc(8px + env(safe-area-inset-bottom));z-index:10}
-nav button{border:0;background:transparent;color:#8390a3;font-size:10px;padding:5px 0}nav button b{display:block;font-size:20px;font-weight:500;margin-bottom:3px}nav button.active{color:var(--blue);font-weight:800}
-.chart{width:100%;height:185px;display:block}.signal{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.dot{width:8px;height:8px;border-radius:50%;background:var(--red);margin-top:5px;flex-shrink:0}.signal:last-child{border:0}
-@media(min-width:600px){main{padding:20px}.desktop-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}.desktop-grid .card{height:100%}header{padding-left:max(18px,calc((100% - 640px)/2));padding-right:max(18px,calc((100% - 640px)/2))}}
-</style>
-</head>
+:root{--blue:#2463eb;--navy:#10264a;--bg:#f3f5fa;--ink:#172033;--muted:#77839a;--line:#e5eaf2;--red:#df5360;--green:#159b73}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;padding-bottom:84px}
+header{background:linear-gradient(135deg,#10264a,#174477);color:white;padding:26px 20px 22px;border-radius:0 0 24px 24px}
+h1{font-size:23px;margin:0 0 7px}.muted{color:var(--muted)}header .muted{color:#c2d2e9;font-size:13px}
+.wrap{max-width:850px;margin:auto;padding:18px 14px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px}.status{font-size:11px;border:1px solid #ffffff55;border-radius:30px;padding:6px 10px;color:#dceaff}
+.search{width:100%;margin-top:18px;padding:15px;border:1px solid #ffffff30;border-radius:13px;background:#ffffff20;color:white;font-size:15px}.search::placeholder{color:#d2dced}
+.section{font-size:18px;font-weight:750;margin:22px 2px 12px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:0 5px 18px #1b31500a}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab,button{border:1px solid var(--line);background:white;color:#68758a;border-radius:25px;padding:9px 13px;font-size:13px}.tab.active,button.primary{background:var(--blue);border-color:var(--blue);color:white}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.filters label{font-size:12px;color:#68758a}.filters input{width:100%;margin-top:7px;padding:11px;border:1px solid var(--line);border-radius:11px;font-size:15px}
+.action{width:100%;margin-top:14px;padding:14px;border:0;border-radius:13px;background:var(--blue);color:white;font-weight:700;font-size:16px}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin:10px 2px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:12px 5px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:500}td:first-child{font-weight:700}td small{display:block;color:var(--muted);font-weight:400;margin-top:4px}.up{color:var(--red)}.down{color:var(--green)}
+.notice{font-size:12px;line-height:1.65;color:#8b6a27;background:#fff9e9;border:1px solid #f5e7bd;border-radius:12px;padding:12px}
+.error{font-size:13px;color:#a33;background:#fff1f1;padding:12px;border-radius:12px;line-height:1.6}
+nav{position:fixed;bottom:0;left:0;right:0;background:#ffffffef;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:12px 4px calc(12px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}
+nav span{font-size:11px;color:#7c879b;text-align:center}nav b{display:block;font-size:17px;margin-bottom:3px}
+@media(max-width:390px){table{font-size:12px}td,th{padding:10px 3px}.filters{gap:8px}}
+</style></head>
 <body>
-<header>
- <div class="top"><div><div class="brand">📈 A股量化助手</div><div class="sub">短线策略 · 信号扫描 · 回测研究</div></div><div class="pill">演示模式</div></div>
- <div class="search">⌕ <input id="search" placeholder="搜索股票代码 / 名称" oninput="renderStocks()"></div>
-</header>
-<main>
-<section id="home" class="page active">
- <div class="section-title">市场概况 <span class="muted">模拟数据 · 非实时</span></div>
- <div class="card"><div class="grid3">
-  <div class="metric"><div class="label">上证指数</div><div class="num red">3021.55</div><div class="red" style="font-size:11px">+0.41%</div></div>
-  <div class="metric"><div class="label">深证成指</div><div class="num red">9456.12</div><div class="red" style="font-size:11px">+0.51%</div></div>
-  <div class="metric"><div class="label">创业板指</div><div class="num red">1832.76</div><div class="red" style="font-size:11px">+0.89%</div></div>
- </div></div>
- <div class="section-title">快捷入口</div>
- <div class="card shortcuts">
-  <button class="shortcut" onclick="go('scan')"><span>🎯</span>量化选股</button><button class="shortcut" onclick="go('market')"><span>📊</span>市场行情</button><button class="shortcut" onclick="go('backtest')"><span>🧪</span>策略回测</button><button class="shortcut" onclick="go('signals')"><span>🔔</span>交易信号</button>
- </div>
- <div class="section-title">今日观察 <span class="muted">按示例强度排序</span></div>
- <div class="card" id="homeStocks"></div>
- <div class="disclaimer">提示：本应用当前为可交互界面原型，股票价格、涨跌幅、回测结果均为虚构示例，不可用于真实交易。</div>
-</section>
-<section id="scan" class="page">
- <div class="section-title">量化选股 <span class="muted">策略参数可调整</span></div>
- <div class="card">
-  <div class="chiprow" id="strategyChips"><button class="chip active" onclick="setStrategy(this,'综合趋势')">综合趋势</button><button class="chip" onclick="setStrategy(this,'放量突破')">放量突破</button><button class="chip" onclick="setStrategy(this,'回调观察')">回调观察</button></div>
-  <label class="label2">最低综合评分 <span id="scoreValue">70</span></label><input type="range" min="50" max="95" value="70" id="score" style="width:100%" oninput="document.getElementById('scoreValue').textContent=this.value">
-  <div class="twocol"><div><label class="label2">涨跌幅下限（%）</label><input id="minchg" class="field" type="number" value="1" step=".5"></div><div><label class="label2">涨跌幅上限（%）</label><input id="maxchg" class="field" type="number" value="8" step=".5"></div></div>
-  <button class="btn" onclick="runScan()">开始扫描</button>
- </div>
- <div class="section-title">筛选结果 <span class="muted" id="scanCount">6 只候选</span></div>
- <div class="card" id="scanResults"></div>
- <div class="disclaimer">当前评分仅为演示逻辑，正式版本需用真实行情计算，并验证样本外表现。</div>
-</section>
-<section id="market" class="page">
- <div class="section-title">行情与自选 <span class="muted">演示数据</span></div>
- <div class="chiprow"><button class="chip active">自选</button><button class="chip">沪深主板</button><button class="chip">创业板</button><button class="chip">科创板</button><button class="chip">ETF</button></div>
- <div class="card" id="marketStocks"></div>
- <button class="btn secondary" onclick="alert('正式版将支持导入 CSV 历史行情。当前版本暂不连接实时行情源。')">导入历史行情（规划中）</button>
-</section>
-<section id="backtest" class="page">
- <div class="section-title">策略回测 <span class="muted">示例结果</span></div>
- <div class="card">
-  <label class="label2">选择策略</label><select class="field" id="btStrategy"><option>综合趋势</option><option>放量突破</option><option>回调观察</option></select>
-  <label class="label2">回测周期</label><select class="field"><option>近 3 个月</option><option>近 6 个月</option><option>近 1 年</option></select>
-  <label class="label2">初始资金（元）</label><input class="field" id="cash" type="number" value="100000">
-  <button class="btn" onclick="runBacktest()">运行示例回测</button>
- </div>
- <div class="card"><div class="twocol"><div class="smallmetric"><span class="muted">累计收益</span><strong class="red" id="btReturn">+18.37%</strong></div><div class="smallmetric"><span class="muted">最大回撤</span><strong id="btDraw">6.21%</strong></div><div class="smallmetric"><span class="muted">胜率</span><strong id="btWin">67.3%</strong></div><div class="smallmetric"><span class="muted">盈亏比</span><strong>2.18</strong></div></div></div>
- <div class="card"><div class="section-title" style="margin-top:0">净值曲线</div><svg class="chart" viewBox="0 0 320 160" preserveAspectRatio="none"><path d="M5 140 L25 135 L45 139 L65 120 L85 126 L105 105 L125 110 L145 82 L165 90 L185 66 L205 73 L225 54 L245 58 L265 35 L285 40 L315 15" fill="none" stroke="#2165f5" stroke-width="3"/><path d="M5 140 L25 135 L45 139 L65 120 L85 126 L105 105 L125 110 L145 82 L165 90 L185 66 L205 73 L225 54 L245 58 L265 35 L285 40 L315 15 L315 155 L5 155 Z" fill="#2165f5" opacity=".08"/></svg><div class="muted">示意曲线，并非真实历史回测结果。</div></div>
- <div class="disclaimer">正式回测需考虑交易成本、涨跌停、停牌、复权、T+1、幸存者偏差及未来函数等问题。</div>
-</section>
-<section id="signals" class="page">
- <div class="section-title">交易信号 <span class="muted">研究提醒</span></div>
- <div class="card">
-  <div class="signal"><div class="dot"></div><div><strong>中科信息 · 300678</strong><div class="muted" style="margin-top:5px">示例：趋势突破，成交量放大</div><span class="tag">关注信号</span></div></div>
-  <div class="signal"><div class="dot" style="background:#2165f5"></div><div><strong>三六零 · 601360</strong><div class="muted" style="margin-top:5px">示例：短期均线向上，等待确认</div><span class="tag" style="background:#edf4ff;color:#2165f5">观察信号</span></div></div>
-  <div class="signal"><div class="dot" style="background:#159b73"></div><div><strong>天孚通信 · 300394</strong><div class="muted" style="margin-top:5px">示例：短线涨幅较大，注意回撤</div><span class="tag greenbg">风险提示</span></div></div>
- </div>
- <div class="disclaimer">所有信号均为静态示意内容，不代表当前股票的真实买卖建议。正式版本将基于真实数据和策略规则生成信号。</div>
-</section>
-<section id="me" class="page">
- <div class="section-title">我的量化工作台</div>
- <div class="card"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:34px">👤</div><div><strong>本地体验用户</strong><div class="muted" style="margin-top:5px">A股短线量化助手 · 原型版</div></div></div></div>
- <div class="card">
-  <div class="stockrow"><div>⭐ 自选股管理</div><span>›</span></div><div class="stockrow"><div>🧪 回测记录</div><span>›</span></div><div class="stockrow"><div>⚙️ 策略设置</div><span>›</span></div><div class="stockrow"><div>📁 行情数据导入</div><span>›</span></div><div class="stockrow"><div>❔ 使用说明</div><span>›</span></div>
- </div>
- <button class="btn secondary" onclick="alert('这是离线前端原型。当前不保存账户数据，也不连接券商。')">查看版本与说明</button>
-</section>
+<header><div class="topline"><div><h1>📈 A股量化助手</h1><div class="muted">沪深北全市场 · 盘中行情扫描</div></div><span class="status" id="status">正在连接数据服务</span></div>
+<input class="search" id="search" placeholder="搜索股票代码 / 名称"></header>
+<main class="wrap">
+<div class="section">量化选股</div>
+<div class="card">
+<div class="tabs"><button class="tab active" data-mode="trend">综合趋势</button><button class="tab" data-mode="volume">放量突破</button><button class="tab" data-mode="pullback">回调观察</button></div>
+<div class="filters"><label>最低综合评分<input id="minScore" type="number" min="0" max="100" value="60"></label><label>涨跌幅下限 (%)<input id="minChange" type="number" step=".1" value="-2"></label><label>涨跌幅上限 (%)<input id="maxChange" type="number" step=".1" value="8"></label><label>最低成交额（万元）<input id="minAmount" type="number" value="3000"></label></div>
+<button class="action" id="scan">开始扫描全市场</button>
+<div class="meta"><span id="updated">尚未获取行情</span><span id="count">0 只候选</span></div>
+<div id="message"></div>
+</div>
+<div class="section">筛选结果</div>
+<div class="card" style="overflow:auto"><table><thead><tr><th>股票</th><th>现价</th><th>涨跌幅</th><th>成交额</th><th>评分</th></tr></thead><tbody id="rows"><tr><td colspan="5" class="muted">请先连接后台行情服务</td></tr></tbody></table></div>
+<div class="notice">数据说明：本版本通过后台数据源获取沪深京A股快照。免费数据源可能存在延迟、限流或中断，不等同于交易所授权实时行情。评分为规则计算结果，不构成投资建议；本工具不会自动下单。</div>
 </main>
-<nav>
- <button class="active" data-page="home" onclick="go('home')"><b>⌂</b>首页</button>
- <button data-page="scan" onclick="go('scan')"><b>⌕</b>选股</button>
- <button data-page="market" onclick="go('market')"><b>▥</b>行情</button>
- <button data-page="backtest" onclick="go('backtest')"><b>⌁</b>回测</button>
- <button data-page="me" onclick="go('me')"><b>♙</b>我的</button>
-</nav>
+<nav><span><b>⌂</b>首页</span><span><b>⌕</b>选股</span><span><b>▥</b>行情</span><span><b>◷</b>回测</span><span><b>♙</b>我的</span></nav>
 <script>
-const stocks=[
- {name:"贵州茅台",code:"600519",price:1768.00,chg:0.76,score:78,tag:"趋势偏强"},
- {name:"宁德时代",code:"300750",price:222.68,chg:1.32,score:86,tag:"放量观察"},
- {name:"比亚迪",code:"002594",price:247.10,chg:2.45,score:88,tag:"趋势突破"},
- {name:"中国平安",code:"601318",price:45.21,chg:1.12,score:73,tag:"趋势偏强"},
- {name:"招商银行",code:"600036",price:34.67,chg:0.87,score:69,tag:"等待确认"},
- {name:"长江电力",code:"600900",price:22.14,chg:0.64,score:62,tag:"观察"},
- {name:"中科信息",code:"300678",price:32.56,chg:5.02,score:92,tag:"放量突破"},
- {name:"东方财富",code:"300059",price:17.26,chg:4.12,score:84,tag:"趋势偏强"}
-];
-let strategy="综合趋势";
-function row(s){return `<div class="stockrow" onclick="showStock('${s.code}')"><div><div class="stockname">${s.name}</div><div class="code">${s.code} · 评分 ${s.score}</div><span class="tag ${s.chg<0?'greenbg':''}">${s.tag}</span></div><div><div class="price ${s.chg>=0?'red':'green'}">${s.price.toFixed(2)}</div><div class="change ${s.chg>=0?'red':'green'}">${s.chg>=0?'+':''}${s.chg.toFixed(2)}%</div></div></div>`}
-function renderStocks(){const q=(document.getElementById('search')?.value||'').trim().toLowerCase();const arr=stocks.filter(s=>(s.name+s.code).toLowerCase().includes(q));['homeStocks','marketStocks','scanResults'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=arr.map(row).join('')||'<div class="muted">没有匹配的股票</div>'})}
-function runScan(){const min=Number(document.getElementById('minchg').value||0),max=Number(document.getElementById('maxchg').value||99),score=Number(document.getElementById('score').value);const a=stocks.filter(s=>s.chg>=min&&s.chg<=max&&s.score>=score).sort((x,y)=>y.score-x.score);document.getElementById('scanResults').innerHTML=a.map(row).join('')||'<div class="muted">当前条件下没有候选股票，请放宽条件。</div>';document.getElementById('scanCount').textContent=a.length+' 只候选'}
-function setStrategy(el,s){strategy=s;document.querySelectorAll('#strategyChips .chip').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
-function runBacktest(){const cash=Number(document.getElementById('cash').value||100000);const r=(Math.random()*14+7);document.getElementById('btReturn').textContent='+'+r.toFixed(2)+'%';document.getElementById('btReturn').className='red';document.getElementById('btDraw').textContent=(Math.random()*5+4).toFixed(2)+'%';document.getElementById('btWin').textContent=(Math.random()*12+58).toFixed(1)+'%';alert('已刷新演示指标。注意：这是随机示例值，不是真实回测。')}
-function showStock(code){const s=stocks.find(x=>x.code===code);if(s)alert(`${s.name}（${s.code}）\\n示例价格：${s.price.toFixed(2)}\\n示例涨跌幅：${s.chg.toFixed(2)}%\\n评分：${s.score}\\n\\n当前为原型演示数据。`)}
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='scan')runScan()}
-renderStocks();runScan();
-</script>
-</body>
-</html>
+const API_BASE = localStorage.getItem('ASHARE_API_BASE') || 'https://YOUR-BACKEND-URL.onrender.com';
+let allRows=[], mode='trend';
+const $=id=>document.getElementById(id);
+function pct(v){return Number(v||0).toFixed(2)+'%'}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function score(s){
+ let ch=Number(s.change_pct||0),vr=Number(s.volume_ratio||0),turn=Number(s.turnover_rate||0);
+ let v=45+Math.max(-15,Math.min(20,ch*3))+Math.max(0,Math.min(15,(vr-1)*8))+Math.max(0,Math.min(10,turn));
+ if(ch<0) v-=8; return Math.round(Math.max(0,Math.min(100,v)));
+}
+function selected(){
+ let q=$('search').value.trim().toLowerCase(),min=+$('minScore').value||0,lo=+$('minChange').value,hi=+$('maxChange').value,amt=(+$('minAmount').value||0)*10000;
+ return allRows.map(s=>({...s,score:score(s)})).filter(s=>(!q||s.code.toLowerCase().includes(q)||s.name.toLowerCase().includes(q))&&s.score>=min&&s.change_pct>=lo&&s.change_pct<=hi&&s.amount>=amt)
+ .filter(s=>mode!=='volume'||s.volume_ratio>=1.5).filter(s=>mode!=='pullback'||(s.change_pct>-3&&s.change_pct<2))
+ .sort((a,b)=>b.score-a.score);
+}
+function render(){
+ let data=selected();$('count').textContent=data.length+' 只候选';
+ $('rows').innerHTML=data.slice(0,300).map(s=>`<tr><td>${esc(s.name)}<small>${esc(s.code)} ${s.market||''}</small></td><td>${Number(s.price||0).toFixed(2)}</td><td class="${s.change_pct>=0?'up':'down'}">${s.change_pct>=0?'+':''}${pct(s.change_pct)}</td><td>${(Number(s.amount||0)/10000).toFixed(0)}万</td><td><b>${s.score}</b></td></tr>`).join('')||'<tr><td colspan="5" class="muted">没有符合条件的股票，可调整筛选参数</td></tr>';
+}
+async function refresh(){
+ $('status').textContent='获取行情中';$('message').innerHTML='';
+ try{
+  const r=await fetch(API_BASE.replace(/\/$/,'')+'/api/stocks',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+  const j=await r.json();if(!j.items)throw Error(j.detail||'数据格式异常');
+  allRows=j.items;$('status').textContent='数据已连接';$('updated').textContent='数据时间：'+(j.updated_at||'未知')+' · '+(j.source||'行情源');
+  $('message').innerHTML=j.warning?`<div class="notice">${esc(j.warning)}</div>`:'';render();
+ }catch(e){$('status').textContent='未连接';$('message').innerHTML=`<div class="error">尚未连接后台行情服务：${esc(e.message)}。请先部署 backend，并将本页 API_BASE 改成后台地址。当前不会显示虚构行情。</div>`;$('rows').innerHTML='<tr><td colspan="5" class="muted">暂无真实行情数据</td></tr>'}
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.mode;render()}));
+['search','minScore','minChange','maxChange','minAmount'].forEach(id=>$(id).addEventListener('input',render));
+$('scan').addEventListener('click',refresh);
+refresh();setInterval(refresh,15000);
+</script></body></html>
