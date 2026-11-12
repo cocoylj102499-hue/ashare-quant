@@ -40,7 +40,9 @@ nav span{font-size:11px;color:#7c879b;text-align:center}nav b{display:block;font
 </main>
 <nav><span><b>⌂</b>首页</span><span><b>⌕</b>选股</span><span><b>▥</b>行情</span><span><b>◷</b>回测</span><span><b>♙</b>我的</span></nav>
 <script>
-const API_BASE = localStorage.getItem('ASHARE_API_BASE') || 'https://ashare-quant.onrender.com';
+
+const API_BASE = 'https://ashare-quant.onrender.com';
+
 let allRows=[], mode='trend';
 const $=id=>document.getElementById(id);
 function pct(v){return Number(v||0).toFixed(2)+'%'}
